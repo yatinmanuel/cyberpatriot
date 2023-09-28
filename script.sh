@@ -53,5 +53,13 @@ if [ -f "$forensics_question_2" ]; then
     echo "Answered Forensics Question 2."
 fi
 
+# Enable automatic updates in 20auto-upgrades.
+auto_upgrades_config="/etc/apt/apt.conf.d/20auto-upgrades"
+if [ -f "$auto_upgrades_config" ]; then
+    # Change options to enable automatic updates and checking.
+    sed -i 's/0/1/g' "$auto_upgrades_config"
+    echo "Enabled automatic updates in $auto_upgrades_config."
+fi
+
 # Notify completion.
 echo "Script execution completed."
